@@ -1,0 +1,294 @@
+<title>Appartement 2.3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark architectural sheet — massive title, full plan on a drafting panel, bento room cards below */
+:root{
+  --bg:#111113;--panel:#19191c;--panel2:#212125;--fg:#ece5d8;--muted:#8d877c;--line:#3a3833;
+  --wall:#ece5d8;--furn:rgba(236,229,216,.06);--accent:#c2475c;--accent-soft:rgba(194,71,92,.16);--glass:#5aa7ff;
+  --display:"Schibsted Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#efeae1;--panel:#e7e1d6;--panel2:#ddd6c9;--fg:#191817;--muted:#6c665c;--line:#c9c1b2;
+  --wall:#191817;--furn:rgba(25,24,23,.05);--accent:#7d1f30;--accent-soft:rgba(125,31,48,.12);--glass:#1f6fd1;color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#efeae1;--panel:#e7e1d6;--panel2:#ddd6c9;--fg:#191817;--muted:#6c665c;--line:#c9c1b2;
+  --wall:#191817;--furn:rgba(25,24,23,.05);--accent:#7d1f30;--accent-soft:rgba(125,31,48,.12);--glass:#1f6fd1;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--display);font-size:16px;line-height:1.55;padding-inline:clamp(16px,4vw,48px);padding-block:32px 64px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+header{display:grid;gap:14px;border-bottom:1px solid var(--line);padding-bottom:22px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(48px,11vw,128px);font-weight:900;letter-spacing:-.055em;line-height:.85;margin:0;text-wrap:balance}
+h1 span{color:var(--accent)}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);padding:5px 10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip b{color:var(--fg);font-weight:500}
+.sheet{background:var(--panel);border:1px solid var(--line)}
+.sheet-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{display:block;width:100%;min-width:940px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:middle;border:1.5px solid}
+.k-new{border-color:var(--accent)!important;background:var(--accent-soft)}
+.k-furn{border-color:var(--fg)!important;background:var(--furn)}
+.k-glass{border-color:var(--glass)!important;border-width:0 0 3px!important;height:8px!important}
+.k-old{border-color:var(--muted)!important;border-style:dashed!important}
+svg text{font-family:var(--display)}
+.wall{stroke:var(--wall);fill:none;stroke-linecap:square}
+.furn{fill:var(--furn);stroke:var(--fg);stroke-width:2.5}
+.new{fill:var(--accent-soft);stroke:var(--accent);stroke-width:3}
+.old{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-dasharray:10 7}
+.door{fill:none;stroke:var(--muted);stroke-width:2}
+.glass{stroke:var(--glass);stroke-width:7}
+.rug{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:4 8}
+.lane{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:2 12;stroke-linecap:round}
+.lbl{fill:var(--fg);font-size:32px;font-weight:800;letter-spacing:-.02em}
+.lbl-s{fill:var(--fg);font-size:22px;font-weight:500}
+.lbl-a{fill:var(--accent);font-size:32px;font-weight:800;letter-spacing:-.02em}
+.dim{fill:var(--muted);font-family:var(--mono)!important;font-size:19px}
+.hatch line{stroke:var(--line);stroke-width:3}
+.zone{fill:url(#deck);stroke:var(--line);stroke-width:2}
+.common{fill:url(#diag);stroke:var(--line);stroke-width:2}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.card{background:var(--panel);padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.card.hl{background:var(--panel2)}
+.card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.card .tag em{font-style:normal;color:var(--accent)}
+.card h2{font-size:30px;font-weight:900;letter-spacing:-.04em;line-height:1;margin:0}
+.card .size{font-family:var(--mono);font-size:13px;color:var(--fg);font-variant-numeric:tabular-nums}
+.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;display:grid;gap:4px}
+.card ul b{color:var(--fg);font-weight:500}
+.note{font-size:13px;color:var(--muted);max-width:70ch}
+@media (max-width:600px){.card h2{font-size:26px}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Plan d'aménagement · Nate &amp; Rania · Netto 91,35 m²</div>
+  <h1>Appartement <span>2.3</span></h1>
+  <div class="meta">
+    <span class="chip">Est ↑ <b>soleil matin</b></span>
+    <span class="chip">Ouest ↓ <b>coucher de soleil</b></span>
+    <span class="chip">Séjour <b>636 × 760</b></span>
+    <span class="chip">Chambre <b>8,70 m²</b></span>
+    <span class="chip">Dressing + bureau <b>12,00 m²</b></span>
+  </div>
+</header>
+
+<section class="sheet" aria-label="Plan complet">
+  <div class="sheet-head"><span>Plan complet · cotes en cm</span><span>Glisse horizontalement sur mobile →</span></div>
+  <div class="scroll">
+<svg viewBox="-370 -40 2110 1240" role="img" aria-labelledby="pt pd">
+<title id="pt">Plan de l'appartement 2.3</title>
+<desc id="pd">Zone nuit à gauche avec entrée, vestiaire, WC, salle de bain, dressing dans l'ancienne grande chambre et chambre dans l'ancienne petite chambre, hall vers le séjour à droite avec cuisine, îlot, table, salon, berging et deux terrasses.</desc>
+<defs>
+  <pattern id="deck" width="24" height="24" patternUnits="userSpaceOnUse" class="hatch"><line x1="0" y1="0" x2="0" y2="24"/></pattern>
+  <pattern id="diag" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)" class="hatch"><line x1="0" y1="0" x2="0" y2="22"/></pattern>
+</defs>
+
+<!-- zones -->
+<rect class="common" x="-350" y="100" width="340" height="325"/>
+<text class="lbl-s" x="-180" y="250" text-anchor="middle">Cage d'escalier</text>
+<text class="dim" x="-180" y="282" text-anchor="middle">commune · ascenseur</text>
+<rect class="zone" x="1075" y="-20" width="636" height="120"/>
+<rect class="zone" x="1075" y="880" width="636" height="300"/>
+
+<!-- walls -->
+<g class="wall" stroke-width="14">
+  <path d="M0 320 V0 H1075 V110 H1150 M1450 110 H1711 V870 H1450 M1100 870 H1075 V415 M1075 320 V310"/>
+  <path d="M0 410 V425 H1075"/>
+</g>
+<g class="wall" stroke-width="9">
+  <path d="M165 0 V305 M355 0 V305 M765 0 V305 M1067 0 V305"/>
+  <path d="M160 305 H260 M340 305 H670 M750 305 H780 M860 305 H1075"/>
+  <path d="M100 170 H165"/>
+  <path d="M1522 870 V482 H1549 M1630 482 H1711"/>
+</g>
+<line class="glass" x1="1150" y1="110" x2="1450" y2="110"/>
+<line class="glass" x1="1100" y1="870" x2="1450" y2="870"/>
+
+<!-- doors -->
+<path class="door" d="M90 410 L0 410 M0 320 A90 90 0 0 1 90 410"/>
+<path class="door" d="M20 170 L20 90 M100 170 A80 80 0 0 0 20 90"/>
+<path class="door" d="M340 305 L340 225 M260 305 A80 80 0 0 1 340 225"/>
+<path class="door" d="M750 305 L750 225 M670 305 A80 80 0 0 1 750 225"/>
+<path class="door" d="M780 305 L780 225 M860 305 A80 80 0 0 0 780 225"/>
+<path class="door" d="M1075 320 L1170 320 M1075 415 A95 95 0 0 0 1170 320"/>
+<path class="door" d="M1549 482 L1549 563 M1630 482 A81 81 0 0 1 1549 563"/>
+
+<!-- WC + vestiaire -->
+<rect class="furn" x="100" y="8" width="45" height="20"/>
+<ellipse class="furn" cx="122" cy="58" rx="19" ry="28"/>
+<text class="lbl-s" x="55" y="70" text-anchor="middle">WC</text>
+<rect class="furn" x="14" y="205" width="45" height="92"/>
+<rect class="furn" x="105" y="180" width="54" height="58"/>
+<rect class="furn" x="105" y="240" width="54" height="58"/>
+<text class="lbl-s" x="82" y="468" text-anchor="middle">Entrée</text>
+<text class="dim" x="82" y="496" text-anchor="middle">vestiaire + banc</text>
+
+<!-- SDB -->
+<rect class="furn" x="175" y="10" width="170" height="70" rx="22"/>
+<rect class="furn" x="175" y="110" width="52" height="170"/>
+<ellipse class="furn" cx="201" cy="155" rx="14" ry="20"/>
+<ellipse class="furn" cx="201" cy="235" rx="14" ry="20"/>
+<text class="lbl" x="290" y="170" text-anchor="middle">SDB</text>
+<text class="dim" x="290" y="198" text-anchor="middle">180 × 300</text>
+
+<!-- Dressing (ex-slaapkamer 1) -->
+<rect class="old" x="362" y="6" width="61" height="292"/>
+<rect class="new" x="700" y="6" width="58" height="208"/>
+<rect class="new" x="428" y="6" width="130" height="75"/>
+<rect class="new" x="565" y="6" width="130" height="75"/>
+<g class="furn"><rect x="432" y="18" width="22" height="50"/><rect x="669" y="18" width="22" height="50"/></g>
+<g style="fill:none;stroke:var(--fg);stroke-width:4;stroke-linecap:round">
+  <path d="M452 22 Q493 8 534 22"/><path d="M589 22 Q630 8 671 22"/>
+</g>
+<text class="lbl-s" x="561" y="58" text-anchor="middle">Assis-debout ×2</text>
+<circle class="new" cx="493" cy="128" r="26"/>
+<circle class="new" cx="629" cy="128" r="26"/>
+<text class="lbl-a" x="392" y="160" text-anchor="middle">A</text>
+<text class="lbl-a" x="729" y="122" text-anchor="middle">B</text>
+<text class="lbl-a" x="560" y="252" text-anchor="middle">Dressing</text>
+<text class="dim" x="560" y="282" text-anchor="middle">400 × 300</text>
+
+<!-- Chambre (ex-slaapkamer 2) -->
+<line class="glass" x1="830" y1="0" x2="1000" y2="0" style="stroke-width:5"/>
+<rect class="new" x="858" y="60" width="200" height="180" rx="4"/>
+<rect class="new" x="1018" y="68" width="34" height="78" rx="4"/>
+<rect class="new" x="1018" y="154" width="34" height="78" rx="4"/>
+<rect class="furn" x="1018" y="12" width="40" height="40"/>
+<rect class="furn" x="1018" y="250" width="40" height="40"/>
+<text class="lbl-a" x="930" y="44" text-anchor="middle">Chambre</text>
+<text class="lbl-s" x="945" y="158" text-anchor="middle">180 × 200</text>
+<text class="dim" x="935" y="288" text-anchor="middle">290 × 300</text>
+
+<!-- Hall -->
+<line class="rug" x1="390" y1="322" x2="1040" y2="322"/>
+<text class="lbl" x="620" y="378" text-anchor="middle">Hall</text>
+<text class="dim" x="850" y="376" text-anchor="middle">115 · galerie / rail LED</text>
+
+<!-- Séjour -->
+<rect class="furn" x="1651" y="112" width="58" height="363"/>
+<rect class="furn" x="1478" y="223" width="75" height="215"/>
+<text class="lbl-s" x="1515" y="337" text-anchor="middle">Îlot</text>
+<text class="lbl-s" x="1600" y="462" text-anchor="middle">Cuisine</text>
+<g class="furn">
+  <circle cx="1237" cy="255" r="20"/><circle cx="1237" cy="320" r="20"/><circle cx="1237" cy="385" r="20"/>
+  <circle cx="1383" cy="255" r="20"/><circle cx="1383" cy="320" r="20"/><circle cx="1383" cy="385" r="20"/>
+</g>
+<rect class="furn" x="1265" y="220" width="90" height="200"/>
+<text class="lbl-s" x="1310" y="327" text-anchor="middle">Table</text>
+<text class="lbl" x="1250" y="496" text-anchor="middle">Séjour</text>
+<text class="dim" x="1250" y="524" text-anchor="middle">636 × 760</text>
+<rect class="rug" x="1088" y="545" width="250" height="295"/>
+<path class="furn" d="M1092 560 H1167 Q1177 560 1177 570 V730 H1312 Q1322 730 1322 740 V810 Q1322 820 1312 820 H1092 Q1082 820 1082 810 V570 Q1082 560 1092 560 Z"/>
+<text class="lbl-s" x="1129" y="660" text-anchor="middle">Canapé</text>
+<circle class="furn" cx="1250" cy="665" r="38"/>
+<rect class="furn" x="1477" y="600" width="40" height="180"/>
+<line x1="1500" y1="607" x2="1500" y2="773" style="stroke:var(--fg);stroke-width:5"/>
+<text class="lbl-s" x="1466" y="697" text-anchor="end">TV 75"</text>
+<path class="lane" d="M1515 450 V520 H1420 V860"/>
+<text class="lbl" x="1616" y="680" text-anchor="middle">Berging</text>
+<text class="dim" x="1616" y="708" text-anchor="middle">189 × 388</text>
+
+<!-- Terrasses -->
+<circle class="furn" cx="1600" cy="40" r="26"/>
+<circle class="furn" cx="1548" cy="40" r="16"/><circle class="furn" cx="1652" cy="40" r="16"/>
+<text class="lbl-s" x="1300" y="48" text-anchor="middle">Terrasse est · bistrot</text>
+<g class="furn">
+  <circle cx="1190" cy="965" r="20"/><circle cx="1270" cy="965" r="20"/><circle cx="1350" cy="965" r="20"/>
+  <circle cx="1190" cy="1115" r="20"/><circle cx="1270" cy="1115" r="20"/><circle cx="1350" cy="1115" r="20"/>
+  <circle cx="1122" cy="1040" r="20"/><circle cx="1418" cy="1040" r="20"/>
+</g>
+<rect class="furn" x="1150" y="990" width="240" height="100"/>
+<text class="lbl-s" x="1270" y="1048" text-anchor="middle">Table 8</text>
+<text class="lbl" x="1590" y="1035" text-anchor="middle">Terrasse</text>
+<text class="dim" x="1590" y="1063" text-anchor="middle">ouest</text>
+
+<text class="dim" x="-350" y="10">EST ↑</text>
+<text class="dim" x="-350" y="1170">OUEST ↓</text>
+</svg>
+  </div>
+  <div class="legend">
+    <span><i class="k-new"></i>Nouvel aménagement</span>
+    <span><i class="k-furn"></i>Mobilier</span>
+    <span><i class="k-old"></i>Penderie existante</span>
+    <span><i class="k-glass"></i>Baie / fenêtre</span>
+    <span><i class="k-new" style="border-style:dotted;background:none"></i>Allée îlot → terrasse</span>
+  </div>
+</section>
+
+<section class="grid" aria-label="Pièces">
+  <article class="card hl">
+    <div class="tag"><span>ex-slaapkamer 2</span><em>inversé</em></div>
+    <h2>Chambre</h2>
+    <div class="size">290 × 300 cm · 8,70 m²</div>
+    <ul>
+      <li><b>Lit 180 × 200</b> tête contre le mur du séjour, accessible des deux côtés</li>
+      <li><b>~55–60 cm de passage</b> de chaque côté, ~90 cm au pied du lit</li>
+      <li><b>Chevets compacts 40 × 40</b> + liseuses murales</li>
+      <li>Fenêtre libre : pas de courant d'air ni de radiateur derrière la tête</li>
+      <li>Aucune armoire : tout part au dressing</li>
+      <li>Face est : rideaux occultants obligatoires</li>
+    </ul>
+  </article>
+  <article class="card hl">
+    <div class="tag"><span>ex-slaapkamer 1</span><em>inversé</em></div>
+    <h2>Dressing + bureau</h2>
+    <div class="size">400 × 300 cm · 12,00 m²</div>
+    <ul>
+      <li><b>2 bureaux assis-debout 130 × 75</b> sous la fenêtre, ~5 cm d'écart entre eux</li>
+      <li><b>1 écran 34" ultrawide</b> chacun (~82 cm), sur bras fixé au plateau</li>
+      <li><b>Tours suspendues</b> sous le plateau côté extérieur : tout monte avec le bureau</li>
+      <li>Une seule prise par poste + goulotte souple, pas de câble tendu en position haute</li>
+      <li><b>~1 m de recul</b> pour les chaises, puis ~1,20 m de circulation vers les penderies</li>
+      <li><b>Côté A</b> : penderie existante ~290 cm · <b>Côté B</b> : 60 × 210, double barre</li>
+      <li>Miroir pleine hauteur au dos de la porte</li>
+    </ul>
+  </article>
+  <article class="card">
+    <div class="tag"><span>woonkamer</span><span>ouest</span></div>
+    <h2>Séjour</h2>
+    <div class="size">636 × 760 cm</div>
+    <ul>
+      <li><b>Table 200 × 90</b> pour 6, parallèle à l'îlot</li>
+      <li><b>Canapé d'angle 260 × 240</b> mur gauche, méridienne côté terrasse</li>
+      <li><b>TV 75" sur meuble bas 180 × 40</b> contre le mur de la berging (prises)</li>
+      <li>Table basse Ø 75, allée ~1,8 m vers la terrasse</li>
+    </ul>
+  </article>
+  <article class="card">
+    <div class="tag"><span>keuken</span><span>existant</span></div>
+    <h2>Cuisine</h2>
+    <div class="size">linéaire 365 cm + îlot 75 × 215</div>
+    <ul>
+      <li>~100 cm entre îlot et plan de travail</li>
+      <li>Tabourets côté table pour l'apéro</li>
+    </ul>
+  </article>
+  <article class="card">
+    <div class="tag"><span>terras</span><span>2×</span></div>
+    <h2>Terrasses</h2>
+    <div class="size">Est 636 × ~120 · Ouest 636 × ~300</div>
+    <ul>
+      <li><b>Est</b> : table bistrot 2 places, café du matin</li>
+      <li><b>Ouest</b> : table 240 × 100 pour 8 + parasol déporté</li>
+    </ul>
+  </article>
+  <article class="card">
+    <div class="tag"><span>hall · badkamer · wc</span></div>
+    <h2>Circulation</h2>
+    <div class="size">Hall 115 cm de large</div>
+    <ul>
+      <li><b>Entrée</b> : banc + patères dans la niche vestiaire</li>
+      <li><b>Hall</b> : galerie de cadres, rail LED, rien au sol</li>
+      <li><b>SDB</b> : déjà équipée, rangement mural en plus</li>
+      <li><b>Berging</b> : rayonnages, aspirateur, frigo d'appoint pour la production RANISÙ</li>
+    </ul>
+  </article>
+</section>
+
+<p class="note">Cotes lues sur le plan de l'architecte, à quelques centimètres près. Mesure sur place avant de commander les penderies et le canapé.</p>
+</div>

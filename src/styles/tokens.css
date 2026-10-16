@@ -1,0 +1,167 @@
+/* Socle — design tokens v1 (source : Figma « Socle — Brand & Design System », variables)
+   Jour = défaut. Nuit = [data-theme="night"] sur n'importe quel conteneur (Studio, bandeaux photo, footer). */
+
+:root {
+  /* ---------- Primitives (ne pas utiliser directement dans les composants) ---------- */
+  --prim-oat-100: #F1EBE0;
+  --prim-linen-200: #E6DDCD;
+  --prim-line-300: #CFC3AE;
+  --prim-travertine-400: #CDBBA0;
+  --prim-stone-500: #8F7C63;
+  --prim-walnut-300: #C4956C;
+  --prim-walnut-700: #5B3A26;
+  --prim-ink-900: #1B1713;
+  --prim-ink-950: #16130F;
+  --prim-night-800: #221D18;
+  --prim-night-700: #3B332A;
+  --prim-muted-300: #ADA190;
+  --prim-muted-600: #6A5F51;
+  --prim-chrome-200: #C8CACC;
+  --prim-chrome-400: #A9ACAE;
+  --prim-cognac-300: #D29A6F;
+  --prim-cognac-600: #8A5636;
+  --prim-olive-300: #A5B68B;
+  --prim-olive-700: #56643F;
+  --prim-danger-300: #E07A6E;
+  --prim-danger-700: #9E2A2B;
+
+  /* ---------- Sémantique · Jour ---------- */
+  --bg-ground: var(--prim-oat-100);
+  --bg-raised: var(--prim-linen-200);
+  --bg-inverse: var(--prim-ink-900);
+  --bg-brand: var(--prim-walnut-700);
+  --bg-stone: var(--prim-travertine-400);
+  --text-primary: var(--prim-ink-900);
+  --text-muted: var(--prim-muted-600);
+  --text-on-inverse: var(--prim-oat-100);
+  --text-brand: var(--prim-walnut-700);
+  --text-accent: var(--prim-cognac-600);
+  --text-success: var(--prim-olive-700);
+  --text-danger: var(--prim-danger-700);
+  --border-hairline: var(--prim-line-300);
+  --border-strong: var(--prim-ink-900);
+  --accent-chrome: var(--prim-chrome-400);
+  --scrim: rgb(22 19 15 / 0.72);
+
+  /* ---------- Espacement (grille de 8) & rayons ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-sm: 2px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ---------- Typographie ---------- */
+  --font-sans: var(--font-hanken), "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), "Bodoni Moda", "Didot", ui-serif, serif;
+
+  /* ---------- Motion ---------- */
+  --motion-duration-instant: 150ms;
+  --motion-duration-fast: 250ms;
+  --motion-duration-base: 450ms;
+  --motion-duration-slow: 800ms;
+  --motion-duration-cinematic: 1200ms;
+  --motion-stagger: 80ms;
+  --motion-distance-rise: 24px;
+  --motion-distance-drawer: 60px;
+  --motion-parallax-far: 0.3;
+  --motion-parallax-mid: 0.6;
+  --motion-parallax-near: 1.2;
+  --motion-hover-zoom: 1.08;
+  --motion-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.7, 0, 0.2, 1);
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  color-scheme: light;
+}
+
+/* ---------- Sémantique · Nuit ---------- */
+[data-theme="night"] {
+  --bg-ground: var(--prim-ink-950);
+  --bg-raised: var(--prim-night-800);
+  --bg-inverse: var(--prim-oat-100);
+  --bg-brand: var(--prim-walnut-300);
+  --bg-stone: var(--prim-stone-500);
+  --text-primary: var(--prim-oat-100);
+  --text-muted: var(--prim-muted-300);
+  --text-on-inverse: var(--prim-ink-950);
+  --text-brand: var(--prim-walnut-300);
+  --text-accent: var(--prim-cognac-300);
+  --text-success: var(--prim-olive-300);
+  --text-danger: var(--prim-danger-300);
+  --border-hairline: var(--prim-night-700);
+  --border-strong: var(--prim-oat-100);
+  --accent-chrome: var(--prim-chrome-200);
+  color-scheme: dark;
+}
+
+[data-theme="day"] {
+  --bg-ground: var(--prim-oat-100);
+  --bg-raised: var(--prim-linen-200);
+  --bg-inverse: var(--prim-ink-900);
+  --bg-brand: var(--prim-walnut-700);
+  --bg-stone: var(--prim-travertine-400);
+  --text-primary: var(--prim-ink-900);
+  --text-muted: var(--prim-muted-600);
+  --text-on-inverse: var(--prim-oat-100);
+  --text-brand: var(--prim-walnut-700);
+  --text-accent: var(--prim-cognac-600);
+  --text-success: var(--prim-olive-700);
+  --text-danger: var(--prim-danger-700);
+  --border-hairline: var(--prim-line-300);
+  --border-strong: var(--prim-ink-900);
+  --accent-chrome: var(--prim-chrome-400);
+  color-scheme: light;
+}
+
+/* ---------- Styles de texte (noms identiques à Figma) ---------- */
+.t-display-hero      { font: 500 136px/0.88 var(--font-sans); letter-spacing: -0.05em; text-transform: uppercase; }
+.t-display-serif-xl  { font: 400 120px/0.95 var(--font-serif); letter-spacing: -0.02em; }
+.t-display-serif-l   { font: 400 72px/0.95 var(--font-serif); letter-spacing: -0.02em; }
+.t-display-serif-i   { font: italic 400 44px/1.05 var(--font-serif); }
+.t-heading-headline  { font: 600 40px/1 var(--font-sans); letter-spacing: -0.035em; }
+.t-heading-title     { font: 600 22px/1.28 var(--font-sans); letter-spacing: -0.015em; }
+.t-data-stat         { font: 500 64px/1 var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.t-body-large        { font: 400 19px/1.58 var(--font-sans); }
+.t-body              { font: 400 16px/1.62 var(--font-sans); }
+.t-label             { font: 500 12px/1.33 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; }
+.t-app-heading       { font: 600 28px/1.1 var(--font-sans); letter-spacing: -0.03em; }
+.t-app-serif-m       { font: 400 40px/1.05 var(--font-serif); letter-spacing: -0.02em; }
+.t-app-serif-i-m     { font: italic 400 28px/1.1 var(--font-serif); letter-spacing: -0.01em; }
+.t-app-ui            { font: 500 14px/1.3 var(--font-sans); letter-spacing: -0.01em; }
+.t-app-ui-s          { font: 500 13px/1.3 var(--font-sans); letter-spacing: -0.005em; }
+.t-app-body-s        { font: 400 14px/1.5 var(--font-sans); }
+.t-app-caption       { font: 400 12px/1.4 var(--font-sans); }
+.t-app-label-s       { font: 500 11px/1.2 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Les grands styles d'affichage se réduisent sous 1024 px (voir Layout & breakpoints) */
+@media (max-width: 1023px) {
+  .t-display-hero     { font-size: clamp(56px, 11vw, 136px); }
+  .t-display-serif-xl { font-size: clamp(48px, 9vw, 120px); }
+  .t-display-serif-l  { font-size: clamp(40px, 7vw, 72px); }
+}
+
+/* ---------- Réduction des animations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-base: 150ms;
+    --motion-duration-slow: 150ms;
+    --motion-duration-cinematic: 150ms;
+    --motion-stagger: 0ms;
+    --motion-distance-rise: 0px;
+    --motion-distance-drawer: 0px;
+    --motion-parallax-far: 0;
+    --motion-parallax-mid: 0;
+    --motion-parallax-near: 0;
+    --motion-hover-zoom: 1;
+  }
+}
+
+body { background: var(--bg-ground); color: var(--text-primary); font-family: var(--font-sans); }
+:focus-visible { outline: 2px solid var(--text-brand); outline-offset: 2px; }

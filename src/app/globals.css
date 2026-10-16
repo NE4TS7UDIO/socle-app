@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/*
+  Socle — thème Tailwind v4.
+  Source des valeurs : src/styles/tokens.css (export des variables Figma).
+  La palette Tailwind par défaut est désactivée : seules les couleurs Socle existent.
+
+  Classes à utiliser :
+    fonds      bg-ground  bg-raised  bg-inverse  bg-brand  bg-stone
+    texte      text-fg  text-fg-muted  text-fg-inverse  text-fg-brand  text-fg-accent  text-fg-success  text-fg-danger
+    filets     border-line (séparateurs uniquement)  border-line-strong (contrôles, focus)
+    thème Nuit data-theme="night" sur un conteneur
+*/
+
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-ground: var(--bg-ground);
+  --color-raised: var(--bg-raised);
+  --color-inverse: var(--bg-inverse);
+  --color-brand: var(--bg-brand);
+  --color-stone: var(--bg-stone);
+  --color-fg: var(--text-primary);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-inverse: var(--text-on-inverse);
+  --color-fg-brand: var(--text-brand);
+  --color-fg-accent: var(--text-accent);
+  --color-fg-success: var(--text-success);
+  --color-fg-danger: var(--text-danger);
+  --color-line: var(--border-hairline);
+  --color-line-strong: var(--border-strong);
+  --color-chrome: var(--accent-chrome);
+  --color-scrim: var(--scrim);
+
+  --font-sans: var(--font-hanken), "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), "Bodoni Moda", "Didot", ui-serif, serif;
+
+  /* Styles de texte (noms Figma) */
+  --text-hero: 136px;
+  --text-hero--line-height: 0.88;
+  --text-hero--letter-spacing: -0.05em;
+  --text-serif-xl: 120px;
+  --text-serif-xl--line-height: 0.95;
+  --text-serif-xl--letter-spacing: -0.02em;
+  --text-serif-l: 72px;
+  --text-serif-l--line-height: 0.95;
+  --text-serif-l--letter-spacing: -0.02em;
+  --text-serif-i: 44px;
+  --text-serif-i--line-height: 1.05;
+  --text-stat: 64px;
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.04em;
+  --text-headline: 40px;
+  --text-headline--line-height: 1;
+  --text-headline--letter-spacing: -0.035em;
+  --text-serif-m: 40px;
+  --text-serif-m--line-height: 1.05;
+  --text-serif-m--letter-spacing: -0.02em;
+  --text-heading: 28px;
+  --text-heading--line-height: 1.1;
+  --text-heading--letter-spacing: -0.03em;
+  --text-serif-i-m: 28px;
+  --text-serif-i-m--line-height: 1.1;
+  --text-serif-i-m--letter-spacing: -0.01em;
+  --text-title: 22px;
+  --text-title--line-height: 1.28;
+  --text-title--letter-spacing: -0.015em;
+  --text-body-l: 19px;
+  --text-body-l--line-height: 1.58;
+  --text-body: 16px;
+  --text-body--line-height: 1.62;
+  --text-ui: 14px;
+  --text-ui--line-height: 1.3;
+  --text-ui--letter-spacing: -0.01em;
+  --text-body-s: 14px;
+  --text-body-s--line-height: 1.5;
+  --text-ui-s: 13px;
+  --text-ui-s--line-height: 1.3;
+  --text-ui-s--letter-spacing: -0.005em;
+  --text-label: 12px;
+  --text-label--line-height: 1.33;
+  --text-label--letter-spacing: 0.12em;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.4;
+  --text-label-s: 11px;
+  --text-label-s--line-height: 1.2;
+  --text-label-s--letter-spacing: 0.1em;
+
+  --radius-*: initial;
+  --radius-sm: 2px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-socle: cubic-bezier(0.7, 0, 0.2, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --breakpoint-tablet: 834px;
+  --breakpoint-desktop: 1280px;
+  --breakpoint-wide: 1440px;
+
+  --container-content: 1312px;
+}
