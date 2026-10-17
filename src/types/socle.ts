@@ -97,6 +97,10 @@ export interface InputProps {
   value?: string;
   error?: string;
   onChange?: (value: string) => void;
+  label?: string; // nom accessible (le dessin n'a pas de libellé visible) ; défaut = placeholder
+  icon?: IconName; // icône 16 px à gauche (champ du lien, écran 11)
+  readOnly?: boolean;
+  name?: string; // envoi de formulaire et saisie automatique
 }
 
 /** Stat — Figma : « Stat ». Chiffre en Data/Stat (chiffres tabulaires). */
@@ -113,6 +117,38 @@ export interface ModalProps {
   title: string; // App/Serif M
   width?: 520 | 560;
   children: ReactNode;
+}
+
+// Composants non dessinés comme tels dans Figma, factorisés depuis les écrans (handoff « Composants »).
+
+/** Switch — 36 × 20 (écran 11). Libellé visible porté par le parent (<label htmlFor>), sinon aria-label. */
+export interface SwitchProps {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  label: string;
+  id?: string;
+  disabled?: boolean;
+}
+
+/** Tag sur photo — pilule Nuit. « outline » = écran 01 (filet + icône), « solid » = écran 10 (pastille des rendus). */
+export interface TagProps {
+  label: string;
+  icon?: IconName;
+  variant?: "outline" | "solid";
+}
+
+/** Barre de progression 2–4 px (6 px pour le budget, écran 12). value entre 0 et 1. */
+export interface ProgressBarProps {
+  value: number;
+  label: string; // nom accessible
+  height?: 2 | 4 | 6;
+}
+
+/** Icône Lucide, trait 1,5, couleur = currentColor. Sans label = décorative (aria-hidden). */
+export interface IconProps {
+  name: IconName;
+  size?: 14 | 16 | 18 | 20 | 24;
+  label?: string;
 }
 
 export type IconName =

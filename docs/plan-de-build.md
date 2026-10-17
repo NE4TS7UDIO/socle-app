@@ -23,9 +23,9 @@ Prompt:
 Prompt:
 > Build the design-system components in `src/components/ui` following docs/handoff.md (section « Composants »), docs/components/*.png and the Figma components (ids in CLAUDE.md): Button (primary, outline, link; hover, pressed, loading, disabled), Segmented (2 and 3 options, radiogroup, sliding active pill), NavItem, Chip, Input, Stat, Switch, Tag (photo pill), ProgressBar, Modal (Day theme, scrim, focus trap, Esc), Icon (lucide wrapper, stroke 1.5). Props from src/types/socle.ts. Then create a private page `/dev/kit` that shows every component in every state, in Day and Night side by side. Use the motion presets for hover and state changes.
 
-- [ ] All components exist, typed, token-only
-- [ ] `/dev/kit` shows every state in both themes
-- [ ] Keyboard: Tab order, focus ring, arrows in Segmented, Esc closes Modal
+- [x] All components exist, typed, token-only
+- [x] `/dev/kit` shows every state in both themes
+- [x] Keyboard: Tab order, focus ring, arrows in Segmented, Esc closes Modal
 
 ## Phase 2 — App shell, 01 Bienvenue, 02 Tableau de bord
 

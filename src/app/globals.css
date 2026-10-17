@@ -89,6 +89,26 @@
   --text-label-s--line-height: 1.2;
   --text-label-s--letter-spacing: 0.1em;
 
+  /* Graisse de chaque style Figma (une classe font-* posée à côté reste prioritaire) */
+  --text-hero--font-weight: 500;
+  --text-serif-xl--font-weight: 400;
+  --text-serif-l--font-weight: 400;
+  --text-serif-i--font-weight: 400;
+  --text-stat--font-weight: 500;
+  --text-headline--font-weight: 600;
+  --text-serif-m--font-weight: 400;
+  --text-heading--font-weight: 600;
+  --text-serif-i-m--font-weight: 400;
+  --text-title--font-weight: 600;
+  --text-body-l--font-weight: 400;
+  --text-body--font-weight: 400;
+  --text-ui--font-weight: 500;
+  --text-body-s--font-weight: 400;
+  --text-ui-s--font-weight: 500;
+  --text-label--font-weight: 500;
+  --text-caption--font-weight: 400;
+  --text-label-s--font-weight: 500;
+
   --radius-*: initial;
   --radius-sm: 2px;
   --radius-lg: 24px;
@@ -103,4 +123,47 @@
   --breakpoint-wide: 1440px;
 
   --container-content: 1312px;
+
+  /* Bouton en chargement : trois points en fondu (animate-dot) */
+  --animate-dot: dot 1.2s cubic-bezier(0.2, 0, 0, 1) infinite;
+  @keyframes dot {
+    0%, 80%, 100% { opacity: 0.25; }
+    40% { opacity: 1; }
+  }
+}
+
+/* États des composants, forçables par data-state pour la page /dev/kit (même rendu que l'état réel).
+   hovered garde la garde (hover: hover) de Tailwind : pas de survol collé après un toucher. */
+@custom-variant hovered {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  &[data-state="hover"] {
+    @slot;
+  }
+}
+@custom-variant pressed (&:is(:active, [data-state="pressed"]));
+@custom-variant field-focus (&:is(:focus-within, [data-state="focus"]));
+
+/* Hors couche, comme le contour de focus global de tokens.css qu'elles remplacent :
+   le champ porte son focus sur son cadre (Input), la fenêtre modale reçoit le focus sans contour. */
+[data-field] :focus-visible,
+[role="dialog"]:focus-visible {
+  outline: none;
+}
+
+/* Zone tactile de 44 px autour des petits contrôles, sans changer leur dessin (handoff « Cibles tactiles »). */
+@utility touch-target {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
 }
