@@ -147,7 +147,7 @@ export interface ProgressBarProps {
 /** Icône Lucide, trait 1,5, couleur = currentColor. Sans label = décorative (aria-hidden). */
 export interface IconProps {
   name: IconName;
-  size?: 14 | 16 | 18 | 20 | 24;
+  size?: 14 | 16 | 18 | 20 | 22 | 24;
   label?: string;
 }
 

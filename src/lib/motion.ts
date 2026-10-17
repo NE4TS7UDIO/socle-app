@@ -1,13 +1,6 @@
 // Socle — motion v1 (Motion pour React, paquet « motion »). Valeurs = collection « Motion » dans Figma.
-import { useRef, type RefObject } from "react";
-import {
-  type Transition,
-  type Variants,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "motion/react";
+import { useRef, useSyncExternalStore, type RefObject } from "react";
+import { type Transition, type Variants, useScroll, useTransform, type MotionValue } from "motion/react";
 
 export const duration = { instant: 0.15, fast: 0.25, base: 0.45, slow: 0.8, cinematic: 1.2 } as const;
 export const stagger = 0.08;
@@ -76,6 +69,25 @@ export const modal: Variants = {
 export const studioSwap: Transition = t(duration.base);
 export const lightSwap: Transition = t(duration.slow, ease.inOut);
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+const subscribeReducedMotion = (onChange: () => void) => {
+  const query = window.matchMedia(reducedMotionQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+
+/**
+ * « Animations réduites » demandé par l'utilisateur. Contrairement à useReducedMotion de Motion, vaut false
+ * pendant l'hydratation (comme le rendu serveur) puis la vraie valeur : à utiliser dès qu'il change le rendu.
+ */
+export function usePrefersReducedMotion(): boolean {
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(reducedMotionQuery).matches,
+    () => false,
+  );
+}
+
 /**
  * Parallaxe liée au scroll. Renvoie un `y` à appliquer sur le calque.
  * depth : parallax.far (fond), parallax.mid (images), parallax.near (étiquettes).
@@ -83,7 +95,7 @@ export const lightSwap: Transition = t(duration.slow, ease.inOut);
  */
 export function useParallax(depth: number, range = 120): { ref: RefObject<HTMLDivElement | null>; y: MotionValue<number> } {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [range * depth, -range * depth]);
   return { ref, y };

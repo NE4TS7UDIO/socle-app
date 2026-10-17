@@ -32,9 +32,9 @@ Prompt:
 Prompt:
 > Build the authenticated app shell (sidebar 264 px fixed while content scrolls) and screens 01 /bienvenue and 02 /projets from docs/screens/01-bienvenue.png and 02-tableau-de-bord.png (Figma 27:7 and 27:134; pull exact spacing with the Figma MCP). Use the demo data. Add ProjectCard (hover zoom, « Ouvrir → »), the « rendu prêt » banner, the horizontal inspiration carousel and the stats row. Screen 01: staggered entrance and the parallax photo with three floating tags at 0.3 / 0.6 / 1.2 depth. Continuer → /projets; Nouveau projet → /projets/nouveau; the Appartement 2.3 card → its Studio.
 
-- [ ] Both screens match their PNGs at 1440 × 900
-- [ ] Empty state of 02 (no projects) and loading skeletons
-- [ ] Sidebar stays fixed while the content scrolls
+- [x] Both screens match their PNGs at 1440 × 900
+- [x] Empty state of 02 (no projects) and loading skeletons
+- [x] Sidebar stays fixed while the content scrolls
 
 ## Phase 3 — Wizard 03 → 07
 
