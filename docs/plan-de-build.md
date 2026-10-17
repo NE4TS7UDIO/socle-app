@@ -13,10 +13,10 @@ Already done when this folder was prepared: Next.js 16 + Tailwind v4 scaffolded,
 Prompt:
 > Read CLAUDE.md and docs/plan-de-build.md. If `.claude/settings.json` or `.mcp.json` is missing, copy them from `setup/` (setup/claude → .claude, setup/mcp.json → .mcp.json). Run `npm install`, then `npm run build` and `npm run lint`. Start `npm run dev` and confirm the start page shows the Socle logo, the serif headline and the Day/Night swatches. Initialise git if needed and make a first commit « Base Socle ». Then tell me what you found and wait.
 
-- [ ] `npm run build` and `npm run lint` pass on this machine
-- [ ] Start page renders with Hanken Grotesk + Bodoni Moda, Day and Night panels
-- [ ] `.claude/` and `.mcp.json` in place; Figma MCP authenticated (`/mcp`)
-- [ ] First git commit
+- [x] `npm run build` and `npm run lint` pass on this machine
+- [x] Start page renders with Hanken Grotesk + Bodoni Moda, Day and Night panels
+- [x] `.claude/` and `.mcp.json` in place; Figma MCP authenticated (`/mcp`)
+- [x] First git commit
 
 ## Phase 1 — UI kit
 
