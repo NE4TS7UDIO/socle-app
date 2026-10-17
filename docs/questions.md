@@ -1,23 +1,31 @@
 # Questions ouvertes pour Nate
 
-- [ ] Moteur des rendus HD : rendu GPU maison ou service tiers ? Délai cible par image ?
-- [ ] Lecture du plan : quel fournisseur ou modèle, et quelle précision accepter avant correction manuelle ?
-- [ ] Catalogue : quels marchands partenaires et d'où viennent les modèles 3D des meubles ?
-- [ ] Prix 39 € TVA comprise ? Procédure exacte du remboursement sous 14 jours ?
-- [ ] Langues : français seul en v1, ou néerlandais dès le lancement à Bruxelles ?
-- [ ] Édition 3D sur mobile : hors v1 comme proposé, ou nécessaire au lancement ?
+Réponses de Nate du 17 octobre 2026 notées après chaque question (→). Les cases vides restent à trancher.
+
+## Produit
+
+- [x] Moteur des rendus HD : rendu GPU maison ou service tiers ? → Service tiers (API de rendu externe).
+- [ ] Rendus HD : délai cible par image ? Quel service ?
+- [x] Lecture du plan : qu'est-ce qui transforme la photo du plan en pièces et en murs ? → Une API spécialisée dans la reconnaissance de plans ; l'écran 05 sert à corriger.
+- [ ] Lecture du plan : quel fournisseur, et quelle précision accepter avant correction manuelle ?
+- [x] Catalogue : d'où viennent les meubles et leurs modèles 3D ? → Des flux des marchands partenaires (données produit et modèles 3D).
+- [ ] Catalogue : quels marchands partenaires ?
+- [x] Prix 39 € TVA comprise ? Remboursement ? → 39 € TVA comprise ; remboursé sur demande dans les 14 jours (lien dans l'e-mail de reçu). Phase 8.
+- [x] Langues : français seul en v1, ou néerlandais dès le lancement ? → Français, néerlandais et anglais au lancement. Mise en place en phase 9 : pas de préfixe dans les adresses (/projets), langue du navigateur puis préférence du compte ; Claude rédige le néerlandais et l'anglais à partir du français (ton « tu » : jij, you), Nate ou un natif relit avant le lancement.
+- [x] Édition 3D sur mobile : hors v1, ou nécessaire au lancement ? → Hors v1 : sur téléphone, la vue partagée (13) et la consultation seulement.
 
 ## Kit UI (phase 1)
 
-- [ ] Contours des contrôles : le handoff (« Accessibilité ») veut un contour --border-strong, ou un fond --bg-raised, pour les champs, chips et interrupteurs, jamais le filet seul ; Figma dessine pourtant Chip (Default), Input et Switch (inactif) avec le filet. Choix provisoire : Chip garde le filet de Figma et prend --border-strong au survol ; Input prend le fond --bg-raised du champ de l'écran 11 ; Switch inactif passe sur --bg-stone (presque identique au filet en Jour, encore visible en Nuit). On garde ?
-- [ ] Badge du Nav item (prop `badge`) : pas dessiné dans Figma. Rendu provisoire : pastille --bg-brand, chiffre en Label Small. À dessiner ?
-- [ ] Chip : pas d'état de survol dans Figma. Rendu provisoire : filet --border-strong et texte --text-primary. OK ?
+- [x] Contours des contrôles (handoff : jamais le filet seul ; Figma : filet sur Chip, Input, Switch inactif) → On garde le compromis : Chip garde le filet et prend --border-strong au survol, Input a le fond --bg-raised, Switch inactif passe sur --bg-stone.
+- [x] Badge du Nav item (pas dessiné dans Figma) → On garde la pastille --bg-brand avec le chiffre en Label Small. À reporter dans Figma.
+- [x] Chip : état de survol (absent de Figma) → On garde : filet --border-strong et texte --text-primary.
 
 ## Coquille, 01 Bienvenue, 02 Tableau de bord (phase 2)
 
-- [ ] Bandeau « rendu prêt » : le PNG de l'écran 02 le montre noir, mais le cadre Figma (27:134) et le handoff utilisent --bg-brand (noyer). Rendu provisoire : noyer. Lequel garder ?
-- [ ] Barre latérale « Inspirations » et « Rendus » : aucun écran dédié dans les maquettes. Cibles provisoires : Inspirations → section « Inspirations de la semaine » de /projets ; Rendus → Studio du projet en cours, vue Rendus. Faut-il des pages à part ?
-- [ ] Chiffres du résumé : le PNG affiche 31 meubles sélectionnés et 12 pièces gardées ; l'app les calcule depuis les données démo (8 et 3 ; le budget 6 840 € concorde). On garde le calcul ?
-- [ ] Salutation de 02 : le PNG dit « Bonjour » avec une date fixe ; l'app met la date du jour et « Bonsoir » à partir de 18 h. OK ?
-- [ ] État vide de 02 : pas dessiné. Rendu provisoire : seule la carte « Nouveau projet », 3 inspirations, ni bandeau ni chiffres, et ni recherche ni tri (rien à chercher). À dessiner ?
-- [ ] Tailles hors échelle typographique, reprises de Figma telles quelles : salutation 56 px (02), « Bonjour Nate. » 76 px (01), chiffres du résumé 48 px, noms des inspirations en Bodoni italique 22 px. Les ajouter comme styles de texte, ou les ramener aux styles existants (Serif L 72, Stat 64, Serif I M 28) ?
+- [x] Bandeau « rendu prêt » : noir (PNG) ou noyer (Figma 27:134, handoff) ? → Noyer (--bg-brand). Le PNG est à mettre à jour.
+- [x] Barre latérale « Inspirations » et « Rendus » sans écran dédié → On garde les cibles actuelles (section « Inspirations de la semaine » de /projets ; Studio du projet en cours, vue Rendus) en attendant des pages dédiées.
+- [ ] Pages /inspirations et /rendus : à dessiner dans Figma.
+- [x] Chiffres du résumé : 31 / 12 (PNG) ou calculés (8 / 3) ? → On garde le calcul depuis les données.
+- [x] Salutation de 02 : date fixe et « Bonjour » (PNG) ? → On garde la date du jour et « Bonsoir » de 18 h à 5 h.
+- [x] État vide de 02 → Mot d'accueil au-dessus de la carte « Nouveau projet » : « Ton premier projet t’attend. » / « Une photo du plan, deux questions, et ton intérieur prend forme en 3D. » (aperçu : /dev/projets-vide). À reporter dans Figma.
+- [x] Tailles hors échelle typographique → Ajoutées comme styles de texte dans globals.css : Serif Welcome 76 (01), Serif Greeting 56 (02), Stat S 48 (résumé), Serif I S 22 (inspirations, italique). À créer aussi dans Figma.

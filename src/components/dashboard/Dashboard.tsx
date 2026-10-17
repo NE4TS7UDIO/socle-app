@@ -1,5 +1,5 @@
 // Tableau de bord (écran 02, Figma 27:134) : contenu à droite de la barre latérale, marges 64, sections espacées de 64.
-// Sans projet : seule la carte « Nouveau projet » + 3 inspirations, ni bandeau ni résumé (handoff « Écrans & parcours »).
+// Sans projet : mot d'accueil + carte « Nouveau projet » + 3 inspirations, ni bandeau ni résumé (handoff « Écrans & parcours »).
 import type { DashboardData } from "@/lib/dashboard";
 import { Reveal } from "@/components/motion/Reveal";
 import { DashboardMain } from "./DashboardMain";

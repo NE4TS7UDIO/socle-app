@@ -2,7 +2,8 @@
 
 // Haut du tableau de bord (écran 02) : salutation, recherche, « Nouveau projet », bandeau « rendu prêt », Mes projets.
 // Entrée en cascade (fadeUp + staggerParent : 800 ms, 80 ms entre éléments). La recherche filtre les cartes par nom ;
-// la carte « Nouveau projet » reste toujours là. Sans projet (état vide), ni recherche ni tri : rien à chercher.
+// la carte « Nouveau projet » reste toujours là. Sans projet (état vide) : un mot d'accueil au-dessus de la carte,
+// ni recherche ni tri (rien à chercher).
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { DashboardData } from "@/lib/dashboard";
@@ -73,6 +74,12 @@ export function DashboardMain({ firstName, renderReady, projects }: DashboardMai
           </h2>
           {hasProjects && <p className="text-ui-s text-fg-muted">Trier : récents</p>}
         </div>
+        {!hasProjects && (
+          <motion.div variants={fadeUp} className="flex flex-col gap-2">
+            <p className="text-heading">Ton premier projet t’attend.</p>
+            <p className="text-body text-fg-muted">Une photo du plan, deux questions, et ton intérieur prend forme en 3D.</p>
+          </motion.div>
+        )}
         <motion.ul variants={staggerParent(0)} className="grid grid-cols-3 gap-6">
           {shown.map((project, index) => (
             <motion.li key={project.href} variants={fadeUp} className="flex">

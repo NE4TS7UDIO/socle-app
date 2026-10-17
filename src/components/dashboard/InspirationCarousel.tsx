@@ -88,7 +88,7 @@ export function InspirationCarousel({ items }: { items: Inspiration[] }) {
                 className="object-cover transition-transform duration-450 ease-out-expo group-hover:scale-[1.08] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               />
             </div>
-            <p className="font-serif text-[22px] leading-[1.1] tracking-[-0.01em] italic">{item.name}</p>
+            <p className="font-serif text-serif-i-s italic">{item.name}</p>
             <p className="text-caption text-fg-muted">{item.materials}</p>
           </li>
         ))}

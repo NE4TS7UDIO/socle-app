@@ -84,7 +84,7 @@ Prompt:
 ## Phase 8 — Accounts, data, payments
 
 Prompt:
-> Add Supabase: auth (magic link), tables projects / rooms / pieces / comments / shares matching src/types/socle.ts, row-level security, storage bucket for plan photos. Replace the demo data with real queries, keep the demo project seeded for Nate's account. Add Stripe Checkout for the 39 € unlock (card + Bancontact), webhook that sets `unlocked = true`, and transactional e-mails (« ton rendu est prêt », invitation to share). Keys in .env.local only; update .env.example.
+> Add Supabase: auth (magic link), tables projects / rooms / pieces / comments / shares matching src/types/socle.ts, row-level security, storage bucket for plan photos. Replace the demo data with real queries, keep the demo project seeded for Nate's account. Add Stripe Checkout for the 39 € unlock (card + Bancontact), webhook that sets `unlocked = true`, refund on request within 14 days (link in the receipt e-mail; 39 € VAT included), and transactional e-mails (« ton rendu est prêt », invitation to share). Keys in .env.local only; update .env.example.
 
 - [ ] Sign-in, create project, upload plan, reopen later
 - [ ] Test payment unlocks exports and HD
@@ -93,8 +93,9 @@ Prompt:
 ## Phase 9 — Polish
 
 Prompt:
-> Do a full pass: motion (every entrance, hover and transition matches docs/motion-spec.png and src/lib/motion.ts), accessibility (docs/handoff.md « Accessibilité »), responsive behaviour for 1280, 1024, 834 and 390 widths (« Layout & breakpoints »), loading/empty/error states, Lighthouse ≥ 90 on performance and accessibility for /projets and /p/[slug]. Write what you changed in docs/changelog.md.
+> Do a full pass: motion (every entrance, hover and transition matches docs/motion-spec.png and src/lib/motion.ts), accessibility (docs/handoff.md « Accessibilité »), responsive behaviour for 1280, 1024, 834 and 390 widths (« Layout & breakpoints »), loading/empty/error states, Lighthouse ≥ 90 on performance and accessibility for /projets and /p/[slug]. Add French, Dutch and English: move all copy into message files, no locale prefix in URLs (browser language first, then the account preference, with a switcher); draft Dutch and English from the French in the « tu » register (jij, you) for Nate to review. Write what you changed in docs/changelog.md.
 
+- [ ] FR / NL / EN on every screen and e-mail; NL and EN reviewed by Nate
 - [ ] Reduced-motion mode checked on every screen
 - [ ] All breakpoints checked
 - [ ] Lighthouse scores recorded

@@ -20,7 +20,7 @@ export function Greeting({ firstName }: { firstName: string }) {
   return (
     <div className="flex flex-col gap-3">
       <p className="text-label-s uppercase text-fg-muted">{date}</p>
-      <h1 className="font-serif text-[56px] leading-[1.05] tracking-[-0.02em]">
+      <h1 className="font-serif text-serif-greeting">
         {hello}, {firstName}.
       </h1>
     </div>

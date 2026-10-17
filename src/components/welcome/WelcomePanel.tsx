@@ -31,7 +31,7 @@ export function WelcomePanel({ firstName }: { firstName: string }) {
         <motion.p variants={fadeUp} className="text-label uppercase text-fg-brand">
           Bienvenue sur Socle
         </motion.p>
-        <motion.h1 variants={fadeUp} className="font-serif text-[76px] leading-[0.95] tracking-[-0.02em]">
+        <motion.h1 variants={fadeUp} className="font-serif text-serif-welcome">
           Bonjour {firstName}.
         </motion.h1>
         <motion.p variants={fadeUp} className="max-w-110 text-body-l text-fg-muted">

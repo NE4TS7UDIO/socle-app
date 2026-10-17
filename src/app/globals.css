@@ -45,14 +45,23 @@
   --text-serif-xl: 120px;
   --text-serif-xl--line-height: 0.95;
   --text-serif-xl--letter-spacing: -0.02em;
+  --text-serif-welcome: 76px; /* écran 01 « Bonjour Nate. » */
+  --text-serif-welcome--line-height: 0.95;
+  --text-serif-welcome--letter-spacing: -0.02em;
   --text-serif-l: 72px;
   --text-serif-l--line-height: 0.95;
   --text-serif-l--letter-spacing: -0.02em;
+  --text-serif-greeting: 56px; /* écran 02 salutation */
+  --text-serif-greeting--line-height: 1.05;
+  --text-serif-greeting--letter-spacing: -0.02em;
   --text-serif-i: 44px;
   --text-serif-i--line-height: 1.05;
   --text-stat: 64px;
   --text-stat--line-height: 1;
   --text-stat--letter-spacing: -0.04em;
+  --text-stat-s: 48px; /* écran 02 résumé chiffré */
+  --text-stat-s--line-height: 1;
+  --text-stat-s--letter-spacing: -0.04em;
   --text-headline: 40px;
   --text-headline--line-height: 1;
   --text-headline--letter-spacing: -0.035em;
@@ -65,6 +74,9 @@
   --text-serif-i-m: 28px;
   --text-serif-i-m--line-height: 1.1;
   --text-serif-i-m--letter-spacing: -0.01em;
+  --text-serif-i-s: 22px; /* écran 02 noms des inspirations (italique) */
+  --text-serif-i-s--line-height: 1.1;
+  --text-serif-i-s--letter-spacing: -0.01em;
   --text-title: 22px;
   --text-title--line-height: 1.28;
   --text-title--letter-spacing: -0.015em;
@@ -92,13 +104,17 @@
   /* Graisse de chaque style Figma (une classe font-* posée à côté reste prioritaire) */
   --text-hero--font-weight: 500;
   --text-serif-xl--font-weight: 400;
+  --text-serif-welcome--font-weight: 400;
   --text-serif-l--font-weight: 400;
+  --text-serif-greeting--font-weight: 400;
   --text-serif-i--font-weight: 400;
   --text-stat--font-weight: 500;
+  --text-stat-s--font-weight: 500;
   --text-headline--font-weight: 600;
   --text-serif-m--font-weight: 400;
   --text-heading--font-weight: 600;
   --text-serif-i-m--font-weight: 400;
+  --text-serif-i-s--font-weight: 400;
   --text-title--font-weight: 600;
   --text-body-l--font-weight: 400;
   --text-body--font-weight: 400;
