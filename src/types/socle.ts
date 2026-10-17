@@ -142,12 +142,13 @@ export interface ProgressBarProps {
   value: number;
   label: string; // nom accessible
   height?: 2 | 4 | 6;
+  fill?: "brand" | "primary"; // noyer (budget, formule) ou encre (attente 04, 07)
 }
 
 /** Icône Lucide, trait 1,5, couleur = currentColor. Sans label = décorative (aria-hidden). */
 export interface IconProps {
   name: IconName;
-  size?: 14 | 16 | 18 | 20 | 22 | 24;
+  size?: 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26;
   label?: string;
 }
 

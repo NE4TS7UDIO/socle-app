@@ -41,9 +41,9 @@ Prompt:
 Prompt:
 > Build the plan wizard: 03 /projets/nouveau (dropzone + « Prendre une photo », file validation JPG/PNG/PDF ≤ 25 Mo), 04 /projets/[id]/lecture (scan-line animation over the plan photo, checklist, auto-advance after 3.5 s — simulate the analysis), 05 /projets/[id]/pieces (vector plan drawn in SVG from `rooms[].polygon`, editable room list synced with the plan, type selects, « Slaapkamer 1 → Dressing » rename, sunrise side toggle), 06 /projets/[id]/ambiance (4 AmbianceCards with hover reveal and depth entrance, budget Segmented, « Je garde » chips) and 07 /projets/[id]/generation (Night theme, animated dome logo loop, two image strips drifting at opposite speeds, rotating status lines, auto-advance to the Studio). Wizard bar with the 3-step stepper and the fixed footer as in the PNGs.
 
-- [ ] 03–07 match their PNGs; step indicator correct on each
-- [ ] 05: selecting a room highlights it in the plan and in the list
-- [ ] Error states: wrong file type, unreadable plan, room without type
+- [x] 03–07 match their PNGs; step indicator correct on each
+- [x] 05: selecting a room highlights it in the plan and in the list
+- [x] Error states: wrong file type, unreadable plan, room without type
 
 ## Phase 4 — Studio shell (08, 08b, 09) on renders
 

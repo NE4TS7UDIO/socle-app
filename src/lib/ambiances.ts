@@ -17,4 +17,5 @@ export const ambiances: {
 
 export const formatEUR = (n: number) =>
   new Intl.NumberFormat("fr-BE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-export const formatM2 = (n: number) => `${new Intl.NumberFormat("fr-BE", { maximumFractionDigits: 1 }).format(n)} m²`;
+export const formatM2 = (n: number, maximumFractionDigits = 1) =>
+  `${new Intl.NumberFormat("fr-BE", { maximumFractionDigits }).format(n)} m²`;

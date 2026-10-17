@@ -54,6 +54,15 @@
   --text-serif-greeting: 56px; /* écran 02 salutation */
   --text-serif-greeting--line-height: 1.05;
   --text-serif-greeting--letter-spacing: -0.02em;
+  --text-serif-generation: 64px; /* écran 07 « On meuble ton appartement. » */
+  --text-serif-generation--line-height: 0.95;
+  --text-serif-generation--letter-spacing: -0.02em;
+  --text-serif-reading: 56px; /* écran 04 « On lit ton plan… » */
+  --text-serif-reading--line-height: 0.95;
+  --text-serif-reading--letter-spacing: -0.02em;
+  --text-serif-step: 48px; /* titres des étapes 05 et 06 */
+  --text-serif-step--line-height: 0.95;
+  --text-serif-step--letter-spacing: -0.02em;
   --text-serif-i: 44px;
   --text-serif-i--line-height: 1.05;
   --text-stat: 64px;
@@ -74,6 +83,8 @@
   --text-serif-i-m: 28px;
   --text-serif-i-m--line-height: 1.1;
   --text-serif-i-m--letter-spacing: -0.01em;
+  --text-serif-i-status: 26px; /* écran 07 phrases d'attente (italique) */
+  --text-serif-i-status--line-height: 1.05;
   --text-serif-i-s: 22px; /* écran 02 noms des inspirations (italique) */
   --text-serif-i-s--line-height: 1.1;
   --text-serif-i-s--letter-spacing: -0.01em;
@@ -107,6 +118,10 @@
   --text-serif-welcome--font-weight: 400;
   --text-serif-l--font-weight: 400;
   --text-serif-greeting--font-weight: 400;
+  --text-serif-generation--font-weight: 400;
+  --text-serif-reading--font-weight: 400;
+  --text-serif-step--font-weight: 400;
+  --text-serif-i-status--font-weight: 400;
   --text-serif-i--font-weight: 400;
   --text-stat--font-weight: 500;
   --text-stat-s--font-weight: 500;
@@ -145,6 +160,50 @@
   @keyframes dot {
     0%, 80%, 100% { opacity: 0.25; }
     40% { opacity: 1; }
+  }
+
+  /* Assistant : boucles d'attente en CSS (handoff « Attente »), toujours posées avec motion-reduce:animate-none. */
+  /* 03 : la pastille d'import flotte de 8 px. */
+  --animate-float: float 1.6s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  /* 04 : ligne de scan, 1,8 s par aller (distance --scan-distance), retour identique. */
+  --animate-scan: scan 1.8s cubic-bezier(0.7, 0, 0.2, 1) infinite alternate;
+  @keyframes scan {
+    to { transform: translateY(var(--scan-distance)); }
+  }
+  /* 04 : cercle pointillé de l'étape en cours, un tour en 2 s. */
+  --animate-turn: turn 2s linear infinite;
+  @keyframes turn {
+    to { transform: rotate(360deg); }
+  }
+  /* 04, 07 : point « en cours » qui respire. */
+  --animate-blink: blink 1.2s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  /* 07 : le dôme du logo se lève (1 s out-expo), reste, redescend (0,8 s) ; le socle s'élargit avec lui. */
+  --animate-dome: dome 3s infinite;
+  @keyframes dome {
+    0% { transform: translateY(100%); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+    33.33% { transform: translateY(0); }
+    73.33% { transform: translateY(0); animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1); }
+    100% { transform: translateY(100%); }
+  }
+  --animate-plinth: plinth 3s infinite;
+  @keyframes plinth {
+    0% { transform: scaleX(0.4); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+    20% { transform: scaleX(1); }
+    80% { transform: scaleX(1); animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1); }
+    100% { transform: scaleX(0.4); }
+  }
+  /* 07 : bandes d'images qui glissent pendant la génération (distance --drift, durée de l'écran). */
+  --animate-drift: drift 8s linear forwards;
+  @keyframes drift {
+    to { transform: translateX(var(--drift)); }
   }
 }
 

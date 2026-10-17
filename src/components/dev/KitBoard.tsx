@@ -6,7 +6,8 @@
 import Image from "next/image";
 import { useId, useState, type ReactNode } from "react";
 import type { IconName, Theme } from "@/types/socle";
-import { formatEUR } from "@/lib/ambiances";
+import { ambiances, formatEUR } from "@/lib/ambiances";
+import { AmbianceCard } from "@/components/ui/AmbianceCard";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { ICONS, Icon } from "@/components/ui/Icon";
@@ -262,6 +263,23 @@ function KitColumn({ theme }: { theme: Theme }) {
         <p className="text-caption text-fg-muted">Toujours en pilule Nuit, quel que soit le thème autour (outline = écran 01, solid = écran 10).</p>
       </Section>
 
+      <Section title="Ambiance card (toujours Nuit)">
+        <div className="flex flex-wrap gap-6">
+          {(["Default", "Hover", "Selected"] as const).map((state) => (
+            <Sample key={state} state={state}>
+              <AmbianceCard
+                {...ambiances[0]}
+                selected={state === "Selected"}
+                data-state={state === "Hover" ? "hover" : undefined}
+                onSelect={() => {}}
+                onPreview={() => {}}
+                tabIndex={-1}
+              />
+            </Sample>
+          ))}
+        </div>
+      </Section>
+
       <Section title="Progress bar">
         <div key={replay} className="flex max-w-120 flex-col gap-6">
           <Sample state="2 px · 30 %">
@@ -272,6 +290,11 @@ function KitColumn({ theme }: { theme: Theme }) {
           <Sample state="4 px · 60 % (formule, écran 02)">
             <div className="w-80">
               <ProgressBar value={0.6} label="Formule Découverte" />
+            </div>
+          </Sample>
+          <Sample state="4 px · encre · 68 % (attente, écran 04)">
+            <div className="w-80">
+              <ProgressBar value={0.68} label="Analyse du plan" fill="primary" />
             </div>
           </Sample>
           <Sample state={`6 px · budget ${formatEUR(6840)} sur ${formatEUR(8000)} (écran 12)`}>

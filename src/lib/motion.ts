@@ -23,6 +23,12 @@ export const fadeUp: Variants = {
   show: { opacity: 1, y: 0, transition: t(duration.slow) },
 };
 
+/** Entrée à délai fixe (timelines Figma de l'assistant : 0,1 / 0,3 / 0,5 s) : fondu + montée de y px, 800 ms. */
+export const riseIn = (delay: number, y: number = distance.rise): Variants => ({
+  hidden: { opacity: 0, y },
+  show: { opacity: 1, y: 0, transition: { ...t(duration.slow), delay } },
+});
+
 export const staggerParent = (delayChildren = 0.1): Variants => ({
   hidden: {},
   show: { transition: { staggerChildren: stagger, delayChildren } },
